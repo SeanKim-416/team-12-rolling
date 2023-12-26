@@ -91,6 +91,7 @@ const AllEmojiListStyle = styled.ul`
     left: -20rem;
   }
   @media screen and (min-width: 768px) {
+    width: fit-content;
     right: 0;
     top: 4.5rem;
   }

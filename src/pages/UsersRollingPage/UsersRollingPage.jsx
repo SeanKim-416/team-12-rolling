@@ -16,7 +16,6 @@ import Toast from '../../components/Toast/Toast';
 import RollingPageCardList from '../../components/Card/RollingPageCardList';
 import PrimaryBtn from '../../components/Button/PrimaryBtn';
 import EmojiPicker from 'emoji-picker-react';
-import IdContext from '../../contexts/IdContext';
 import RecipientContext from '../../contexts/RecipientContext';
 import shareMessage from '../../apis/apiKakao';
 
@@ -222,20 +221,18 @@ export default function UsersRollingPage({ deletePage = false }) {
       </Header>
 
       <RecipientContext.Provider value={response}>
-        <IdContext.Provider value={params.createdId}>
-          <Header>
-            {isLoadingSuccess ? (
-              <HeaderBottom
-                width={width}
-                onShare={handleShare}
-                onShareURLClick={handleSumbitAdressShare}
-                onClick={handleClickEmojiPickerOpenList}>
-                {response.name}
-              </HeaderBottom>
-            ) : null}
-            {emojiPickerOpen ? <EmojiPicker /> : ''}
-          </Header>
-        </IdContext.Provider>
+        <Header>
+          {isLoadingSuccess ? (
+            <HeaderBottom
+              width={width}
+              onShare={handleShare}
+              onShareURLClick={handleSumbitAdressShare}
+              onClick={handleClickEmojiPickerOpenList}>
+              {response.name}
+            </HeaderBottom>
+          ) : null}
+          {emojiPickerOpen ? <EmojiPicker /> : ''}
+        </Header>
       </RecipientContext.Provider>
 
       <MainStyle
